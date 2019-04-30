@@ -2,14 +2,11 @@
 const {
   Pool
 } = require('pg');
-const config = require('../../config/config.json');
+const config = require('../config/config.json');
+const configString = config.elephantSQL;
 
 const pool = new Pool({
-  user: config.username,
-  host: 'localhost',
-  database: 'store',
-  password: config.password,
-  port: 5432,
+  connectionString: configString
 });
 
 // create array of values to insert into database
