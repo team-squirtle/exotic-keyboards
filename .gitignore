@@ -163,4 +163,4 @@ fabric.properties
 .idea/httpRequests
 
 # config
-/config/
+server/config/
