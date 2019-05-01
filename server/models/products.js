@@ -1,13 +1,13 @@
-// const pg = require('pg');
+const pool = require('../bin/postgresNode.js');
 
-// module.exports = function (data) {
-//   pg.connect(uri, (err, db) => {
-//     if (err) throw new Error(err);
-//     db.query(tableQuery, (err, res) => {
-//       if (err) {
-//         console.log(err)
-//       }
-//     })
-//   })
-// }
-    
+const productModel = {};
+
+productModel.returnWoods = (cb) => {
+  pool.query('SELECT * FROM wood', cb);
+};
+
+productModel.returnStains = (cb) => {
+  pool.query('SELECT * FROM stain', cb);
+};
+
+module.exports = productModel;

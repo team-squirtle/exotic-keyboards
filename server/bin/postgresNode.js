@@ -12,7 +12,7 @@ const pool = new Pool({
 app.use(express.static('../components/Carousel/carousel'))
 
 // create array of values to insert into database
-const woodValuesToInsert = [{
+const woodValuesToInsert = [ {
   type: 'ash',
   image: 'https://imgur.com/1aIZHue',
   description: 'Tough hardwood imported from southeastern states',
@@ -48,8 +48,8 @@ const woodValuesToInsert = [{
   description: 'Top of the line, solid wood imported from western states',
   price: 29.99,
   inStock: true
-}];
-const stainValuesTOInsert = [{
+} ];
+const stainValuesTOInsert = [ {
   type: 'Burgundy',
   image: 'https://imgur.com/Ybv96C6',
   description: 'Water-resistant and durable',
@@ -85,7 +85,7 @@ const stainValuesTOInsert = [{
   description: 'High demand, high quality, water-resistant and durable',
   price: 25.99,
   inStock: true
-}];
+} ];
 
 // DB insert queries
 const createWoodTable =
@@ -99,7 +99,7 @@ const stainTableInsertQuery =
   "price" numeric(10,2) NOT NULL,
   "inStock" boolean)`;
 
-  const cartTableQuery =
+const cartTableQuery =
   `CREATE TABLE IF NOT EXISTS cart(
   "_id" serial PRIMARY KEY NOT NULL,
   "orderID" integer NOT NULL,
@@ -117,7 +117,7 @@ function createWoodTableAndInsertValues() {
       if (result.rowCount < 6) {
         const woodValues = [];
         for (let i = 0; i < woodValuesToInsert.length; i++) {
-          woodValues.push(Object.values(woodValuesToInsert[i]));
+          woodValues.push(Object.values(woodValuesToInsert[ i ]));
         }
         woodValues.forEach(value => {
           pool.query(`INSERT INTO wood ("type", "image", "description", "price", "inStock") VALUES ($1, $2, $3, $4, $5) RETURNING *;`, value, (err, res) => {
@@ -136,7 +136,7 @@ function createStainTableAndInsertValues() {
       if (result.rowCount < 6) {
         const stainValues = [];
         for (let i = 0; i < stainValuesTOInsert.length; i++) {
-          stainValues.push(Object.values(stainValuesTOInsert[i]));
+          stainValues.push(Object.values(stainValuesTOInsert[ i ]));
         }
         stainValues.forEach(value => {
           pool.query(`INSERT INTO stain ("type", "image", "description", "price", "inStock") VALUES ($1, $2, $3, $4, $5) RETURNING *;`, value, (err, res) => {

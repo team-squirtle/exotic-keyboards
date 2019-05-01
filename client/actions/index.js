@@ -4,17 +4,18 @@ import axios from 'axios';
 import * as types from '../constants/actionTypes';
 
 // async action creator
+
 export const getWood = () => {
   return (dispatch) => {
     axios.get('/api/wood')
-      .catch(err => {
-        console.log(err);
-      })
       .then(response => {
         dispatch({
           type: types.GET_WOOD,
           payload: response.data
         })
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
 };
@@ -22,14 +23,14 @@ export const getWood = () => {
 export const getStain = () => {
   return (dispatch) => {
     axios.get('/api/stain')
-      .catch(err => {
-        console.log(err);
-      })
       .then(response => {
         dispatch({
           type: types.GET_STAIN,
           payload: response.data
         })
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
 };

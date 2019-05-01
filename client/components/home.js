@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import ControlledCarousel from './Carousel/Carousel'
 import Carousel from 'react-bootstrap/Carousel'
-
+import WoodNavbar from '../containers/WoodNavbar';
 
 const Home = () => {
   return(
@@ -12,7 +12,5 @@ const Home = () => {
       <Link to="/wood">get started </Link>
     </div>
   )
-
-  };
-
+};
 export default Home;
