@@ -35,6 +35,23 @@ export const getStain = () => {
   }
 };
 
+export const login = (value) => {
+  return (dispatch) => {
+    axios.post('/* login route goes here */', {
+      email: value.email,
+      password: value.password
+    })
+      .then(response => {
+        dispatch({
+          type: types.LOGIN,
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
+
 // test action creator - wood
 /*export const getWood = value => {
   return {
@@ -75,6 +92,9 @@ export const getStain = () => {
   }
 };*/
 
+
+
+
 export const submitOrder = () => {
   return {
     type: types.SUBMIT_ORDER
@@ -93,5 +113,11 @@ export const selectStain = (value) => {
   return {
     type: types.SELECT_STAIN,
     payload: value
+  }
+};
+export const logout = () => {
+  console.log('logging out...');
+  return {
+    type: types.LOGOUT,
   }
 };
