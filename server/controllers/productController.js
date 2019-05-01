@@ -1,22 +1,20 @@
 const pool = require('../bin/postgresNode.js');
-//const productModel = require('../models/products.js')
+const productModel = require('../models/products');
 const productController = {};
 
 productController.woodQuery = (req, res, next) => {
-
-  pool.query('SELECT * FROM wood', (err, result) => {
+  productModel.returnWoods(function (err, result) {
     if (err) {
-      throw err
+      next(err);
     }
     res.send(result.rows);
   });
 };
 
 productController.stainQuery = (req, res, next) => {
-
-  pool.query('SELECT * FROM stain', (err, result) => {
+  productModel.returnStains(function (err, result) {
     if (err) {
-      throw err
+      next(err);
     }
     res.send(result.rows);
   });
@@ -52,16 +50,10 @@ productController.createCart = (req, res) => {
 
   // function insertOrder(){
 
-
-
   // }
-
   getTotal();
   getOrderID();
   // insertOrder();
-
-
-
 }
 
 

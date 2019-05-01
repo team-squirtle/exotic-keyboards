@@ -13,6 +13,7 @@ app.use(express.static('../components/Carousel/carousel'));
 //routes
 
 const productRoute = require('./routes/productRoute.js');
+const userRoute = require('./routes/userRoutes.js');
 
 app.get('/', (req, res)=>{
   res.sendFile(path.join(__dirname, 'index.html'));
@@ -24,7 +25,8 @@ app.use(cookieParser());
 
 
 // app.use('/build', express.static(path.join(__dirname, '../build')));
-app.use('/api', productRoute);
+app.use('/api/product', productRoute);
+app.use('/api/users', userRoute);
 
 app.use('/', (req, res) => {
  res.sendFile(path.join(__dirname, '../index.html'));
