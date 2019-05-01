@@ -9,6 +9,8 @@ const pool = new Pool({
   connectionString: configString
 });
 
+app.use(express.static('../components/Carousel/carousel'))
+
 // create array of values to insert into database
 const woodValuesToInsert = [ {
   type: 'ash',
