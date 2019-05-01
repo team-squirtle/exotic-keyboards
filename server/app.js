@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(express.static('../components/Carousel/carousel'));
 
 //routes
 
