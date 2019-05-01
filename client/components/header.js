@@ -1,4 +1,5 @@
 import React from 'react';
+import WoodNavbar from '../containers/WoodNavbar';
 
 const headerStyle = {
   color: 'brown'
@@ -6,9 +7,10 @@ const headerStyle = {
 
 const Header = () => {
   return (
-      <div>
-        <h1 style={headerStyle} className="header"> Lumber Exotics Co. </h1>
-      </div>
+    <div>
+      <WoodNavbar />
+      {/* <h1 style={headerStyle} className="header"> Lumber Exotics Co. </h1> */}
+    </div>
   );
 };
 

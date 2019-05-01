@@ -20,6 +20,7 @@ productController.stainQuery = (req, res, next) => {
   });
 };
 
+// TODO: connect to frontend/user acct
 productController.createCart = (req, res) => {
   const regBody = {
     'customer': 'Mike',
@@ -33,9 +34,9 @@ productController.createCart = (req, res) => {
     let stainPrice = 0;
     let basePrice = 19.99;
     pool.query(`SELECT price FROM wood WHERE type='${regBody.wood}'`, (err, result) => {
-      woodPrice = result.rows["0"].price;
+      woodPrice = result.rows[ "0" ].price;
       pool.query(`SELECT price FROM stain WHERE type='${regBody.stain}'`, (err, result2) => {
-        stainPrice = result2.rows["0"].price;
+        stainPrice = result2.rows[ "0" ].price;
         console.log(woodPrice, stainPrice);
       })
     })
@@ -43,7 +44,7 @@ productController.createCart = (req, res) => {
 
   function getOrderID() {
     let name = regBody.customer;
-    let ranNum = Math.floor(1000 + Math.random() * 9000); 
+    let ranNum = Math.floor(1000 + Math.random() * 9000);
     let orderID = name + ranNum;
     console.log(orderID);
   };
