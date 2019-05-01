@@ -152,8 +152,8 @@ function createCartTable() {
   });
 }
 
-createWoodTableAndInsertValues();
-createStainTableAndInsertValues();
-createCartTable();
+// createWoodTableAndInsertValues();
+// createStainTableAndInsertValues();
+// createCartTable();
 
 module.exports = pool;
