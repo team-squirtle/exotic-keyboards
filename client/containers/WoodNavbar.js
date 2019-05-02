@@ -8,14 +8,7 @@ import { Col, Navbar, Container, Button, InputGroup, Form, FormControl } from 'r
 class WoodNavbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
-  }
-
-  onChange(event) {
-    console.log('yoyoyo', this.props)
-    this.props.inputEmail(event)
+    this.state = {}
   }
 
   render() {
@@ -31,12 +24,7 @@ class WoodNavbar extends Component {
                 type='email'
                 placeholder='Email'
                 className='mr-sm-2'
-                // inputRef={node => this.inputNode = node}
-                onChange={
-                  this.onChange.bind(this)
-                  // this.props.inputEmail
-                } />
-
+                onChange={this.props.inputEmail} />
               <Form.Control type='password' placeholder='Password' className='mr-sm-2' />
               <Button type='submit' variant='secondary' >Login</Button>
             </Form.Row>
@@ -54,11 +42,8 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   login: () => dispatch(actions.login()),
   inputEmail: (event) => {
-    console.log('jh')
     dispatch(actions.inputEmail(event.target.value));
   },
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WoodNavbar));
-
-// export default WoodNavbar;

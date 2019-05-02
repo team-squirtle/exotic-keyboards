@@ -75,7 +75,6 @@ export const selectStain = (value) => {
   }
 };
 export const inputEmail = (value) => {
-  console.log('you got here')
   return {
     type: types.INPUT_EMAIL,
     payload: value,
