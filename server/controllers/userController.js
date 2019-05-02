@@ -4,7 +4,7 @@ const userController = {};
 userController.createUser = (req, res) => {
   const { email, password } = req.body;
   if (email && password) {
-    const queryString = `INSERT INTO users (email, password) VALUES ('${ email }', crypt('${ password }', gen_salt('bf', 8))`;
+    const queryString = `INSERT INTO users (email, password) VALUES ('${ email }', crypt('${ password }', gen_salt('bf', 8)))`;
     pool.query(queryString, (err, result) => {
       if (err) {
         res.send(err);
@@ -25,7 +25,7 @@ userController.userLogin = (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.send(result);
+      res.send(result.rows[0].email);
     }
   });
 };
