@@ -17,12 +17,33 @@ module.exports = {
       test: /\.js$/,
       exclude: /(node_modules)/,
       use: {
-        loader: 'babel-loader',
+        loader: 'babel-loader', 
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react']
         }
       }
-    }]
+    },
+    {
+      test: /scss$/,
+      exclude: /node_modules/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader'],
+    },
+    // { 
+    //   test: /\.(gif|png|jpe?g|svg)$/i,
+    //   use: 
+    //     [
+    //     'file-loader',
+    //       {
+    //         loader: 'image-webpack-loader',
+    //         options: {
+    //         bypassOnDebug: true, // webpack@1.x
+    //         disable: true, // webpack@2.x and newer
+    //         },
+    //       },
+    //     ],
+    //   loader: 'url-loader?limit=8192' 
+    // }
+  ]
   },
   output: {
     path: path.resolve(__dirname, 'build'),
