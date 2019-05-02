@@ -3,7 +3,7 @@ const orderController = {};
 
 orderController.createOrder = (req, res) => {
   const orderInfo = req.body;
-  pool.query()
+  // pool.query()
 
 };
 
