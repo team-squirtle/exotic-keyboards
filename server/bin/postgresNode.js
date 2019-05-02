@@ -10,38 +10,38 @@ const pool = new Pool({
 });
 // create array of values to insert into database
 const woodValuesToInsert = [ {
-  type: 'ash',
-  image: 'https://imgur.com/1aIZHue',
+  type: 'Ash',
+  image: 'https://i.imgur.com/ymNfy5O.jpg',
   description: 'Tough hardwood imported from southeastern states',
   price: 19.99,
   inStock: true
 }, {
-  type: 'birch',
-  image: 'https://imgur.com/sQmjwrT',
+  type: 'Birch',
+  image: 'https://i.imgur.com/9XhHcCV.jpg',
   description: 'Hard, heavy wood imported from northeastern states',
   price: 25.99,
   inStock: true
 }, {
-  type: 'cherry',
-  image: 'https://imgur.com/nfYqw34',
+  type: 'Cherry',
+  image: 'https://i.imgur.com/TOPVuiy.jpg',
   description: 'One of our premium wood imported from northeastern states',
   price: 19.99,
   inStock: true
 }, {
-  type: 'maple',
-  image: 'https://imgur.com/6mF8cnY',
+  type: 'Maple',
+  image: 'https://i.imgur.com/0lpxMjK.jpg',
   description: 'Most popular and durable wood imported from southeastern states',
   price: 29.99,
   inStock: true
 }, {
-  type: 'pine',
-  image: 'https://imgur.com/hCoZu9C',
+  type: 'Pine',
+  image: 'https://i.imgur.com/IjNt26d.jpg',
   description: 'Imported from eastern states',
   price: 15.99,
   inStock: true
 }, {
-  type: 'redoak',
-  image: 'https://imgur.com/KACe4VK',
+  type: 'Red Oak',
+  image: 'https://i.imgur.com/3jdB69U.jpg',
   description: 'Top of the line, solid wood imported from western states',
   price: 29.99,
   inStock: true

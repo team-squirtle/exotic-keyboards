@@ -7,7 +7,7 @@ import * as types from '../constants/actionTypes';
 
 export const getWood = () => {
   return (dispatch) => {
-    axios.get('/api/wood')
+    axios.get('/api/product/wood')
       .then(response => {
         dispatch({
           type: types.GET_WOOD,
@@ -22,7 +22,7 @@ export const getWood = () => {
 
 export const getStain = () => {
   return (dispatch) => {
-    axios.get('/api/stain')
+    axios.get('/api/product/stain')
       .then(response => {
         dispatch({
           type: types.GET_STAIN,

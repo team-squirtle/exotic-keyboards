@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
 import ProductDisplay from '../components/productDisplay';
+import CardGroup from 'react-bootstrap/CardGroup'
 
 const woodSelectStyle = {  // Color will change when wood is selected,
   textAlign: 'center',
@@ -58,7 +59,9 @@ class WoodContainer extends Component {
     return (
       <div>
         <h1>Select your hardwood type:</h1>
-        { woodBoxes }
+        <div className="card-group">
+          { woodBoxes }
+        </div>
         <button onClick={this.goToStainSelection}>Next step: Select your stain</button>
       </div>
     );

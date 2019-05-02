@@ -1,5 +1,6 @@
 import React from 'react';
-import Carousel from 'react-bootstrap/Carousel'
+import Carousel from 'react-bootstrap/Carousel';
+import {Link} from 'react-router-dom';
 
 
 class ControlledCarousel extends React.Component {
@@ -33,12 +34,12 @@ class ControlledCarousel extends React.Component {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src='https://i.imgur.com/g9Qdfv6.jpg'
+            src='https://i.imgur.com/3Q3Xcht.jpg'
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Sourced from the Finest Timber</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <div>Sourced from the Finest Timber</div>
+            <Link to="/wood">Get Started </Link>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -49,8 +50,8 @@ class ControlledCarousel extends React.Component {
           />
 
           <Carousel.Caption>
-            <h3>Choose Your Lumber</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div>Choose Your Lumber</div>
+            <Link to="/wood">Get Started </Link>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -61,10 +62,8 @@ class ControlledCarousel extends React.Component {
           />
 
           <Carousel.Caption>
-            <h3>Choose your Stain</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <div>Choose your Stain</div>
+            <Link to="/wood">Get Started </Link>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -75,10 +74,8 @@ class ControlledCarousel extends React.Component {
           />
 
           <Carousel.Caption>
-            <h3>Fast &amp; Free Shipping </h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <div>Fast &amp; Free Shipping </div>
+            <Link to="/wood">Get Started </Link>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
