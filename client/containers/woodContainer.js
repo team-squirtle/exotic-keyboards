@@ -5,10 +5,10 @@ import { withRouter } from 'react-router';
 import * as actions from '../actions/index';
 import ProductDisplay from '../components/productDisplay';
 
-const woodSelectStyle = {  // Color will change when wood is selected,
-  textAlign: 'center',
-  border: '4px solid black'
-};
+// const woodSelectStyle = {  // unused code
+//   textAlign: 'center',
+//   border: '4px solid black'
+// };
 
 // CONNECT our redux store, mapStateToProps, mapDispatchToProps
 class WoodContainer extends Component {
@@ -43,22 +43,22 @@ class WoodContainer extends Component {
 
   goToStainSelection() {
     if (this.state.selectedItem !== false) {
-      const {history} = this.props;
+      const { history } = this.props;
       history.push('/stain');
     }
   }
 
   render() {
     const woodBoxes = this.props.wood.map(el => (
-      <ProductDisplay key={ el.type } type={ el.type } image={ el.image } description={ el.description }
-                      price={ el.price } inStock={ el.inStock } selectedItem={ this.state.selectedItem }
-                      selectItemClickHandler={ this.selectItemClickHandler }/>
+      <ProductDisplay key={el.type} type={el.type} image={el.image} description={el.description}
+        price={el.price} inStock={el.inStock} selectedItem={this.state.selectedItem}
+        selectItemClickHandler={this.selectItemClickHandler} />
     ));
 
     return (
       <div>
         <h1>Select your hardwood type:</h1>
-        { woodBoxes }
+        {woodBoxes}
         <button onClick={this.goToStainSelection}>Next step: Select your stain</button>
       </div>
     );
