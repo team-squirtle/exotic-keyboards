@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ControlledCarousel from './Carousel/Carousel'
 import Carousel from 'react-bootstrap/Carousel'
 import WoodNavbar from '../containers/WoodNavbar';
@@ -10,13 +10,13 @@ const Wrapper = styled.div`
   font-family: "Helvetica Neue";
   line-height: 210px;
   text-align: center;
-`
+
 
 const Home = () => {
-  return(
-    <Wrapper>
-       <ControlledCarousel id="myCarousel" />
-    </Wrapper>
+  return (lkdflajdflja
+    < Wrapper >
+    <ControlledCarousel id="myCarousel" />
+    </Wrapper >
   )
 };
 
