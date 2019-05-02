@@ -5,6 +5,7 @@ const initialState = {
   stain: { type: 'purple', price: 30 },
   base: 50,
   total: 100,
+  email: '',
   didLogIn: false,
 };
 
@@ -35,6 +36,11 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         didLogIn: false,
+      };
+    case types.INPUT_EMAIL:
+      return {
+        ...state,
+        email: action.payload,
       };
     default:
       return {

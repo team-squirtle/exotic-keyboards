@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import * as actions from '../actions/index';
 import ProductDisplay from '../components/productDisplay';
@@ -26,11 +26,11 @@ class StainContainer extends Component {
   }
 
   selectItemClickHandler(e) {  // handleClick will setState to NOT selected when clicked.
-    const payloadObj ={};
+    const payloadObj = {};
     payloadObj.type = e.currentTarget.id;
     this.props.stain.forEach(item => {
       if (payloadObj.type === item.type) {
-        payloadObj.price = parseFloat(item['price']);
+        payloadObj.price = parseFloat(item[ 'price' ]);
       }
     });
     // select wood type for cart
@@ -41,7 +41,6 @@ class StainContainer extends Component {
   }
 
   goToCheckout() {
-    // console.log(this.state);
     if (this.state.selectedItem !== false) {
       const { history } = this.props;
       history.push('/cart');
@@ -49,9 +48,8 @@ class StainContainer extends Component {
   }
 
   render() {
-    // console.log(this.props.stain);
-    const stainBoxes = this.props.stain.map(el=> (
-      <ProductDisplay key={el.type} type={el.type} image={el.image} description={el.description} price={el.price} inStock={el.inStock} selectedItem={this.state.selectedItem} selectItemClickHandler={this.selectItemClickHandler}/>
+    const stainBoxes = this.props.stain.map(el => (
+      <ProductDisplay key={el.type} type={el.type} image={el.image} description={el.description} price={el.price} inStock={el.inStock} selectedItem={this.state.selectedItem} selectItemClickHandler={this.selectItemClickHandler} />
     ));
 
     return (
@@ -74,7 +72,7 @@ const mapStateToProps = store => ({
 // Runs our action creator
 const mapDispatchToProps = dispatch => ({
   // getWood: val => dispatch(actions.getWood(val))
-  getStain: () =>  dispatch(actions.getStain()),
+  getStain: () => dispatch(actions.getStain()),
   selectStain: (value) => dispatch(actions.selectStain(value))
 });
 
