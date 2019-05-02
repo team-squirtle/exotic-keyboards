@@ -78,3 +78,6 @@ const mapDispatchToProps = dispatch => ({
 
 // This is how are container knows what method is has available to it in its access to the store
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StainContainer));
+
+
+

@@ -34,7 +34,7 @@ class WoodNavbar extends Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       }
-    return axios('uri', requestOptions)
+    return axios('/api/user/login', requestOptions)
       .then(() => { console.log('success!') })
       .catch((err) => { console.log(err) })
 
@@ -59,6 +59,7 @@ class WoodNavbar extends Component {
             name='loginForm'>
             <Form.Row >
               <Form.Control
+                size='sm'
                 type='email'
                 name='email'
                 value={email}
@@ -69,6 +70,7 @@ class WoodNavbar extends Component {
 
               />
               <Form.Control
+                size='sm'
                 type='password'
                 name='password'
                 value={password}
@@ -76,6 +78,7 @@ class WoodNavbar extends Component {
                 onChange={this.handleChange}
               />
               <Button
+                size='sm'
                 type='submit'
                 variant='secondary'
               // onSubmit={this.props.login}
@@ -96,10 +99,10 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
 
-  login: () => dispatch(actions.login()),
-  inputEmail: (event) => {
-    dispatch(actions.inputEmail(event.target.value));
-  },
+  // login: () => dispatch(actions.login()),
+  // inputEmail: (event) => {
+  //   dispatch(actions.inputEmail(event.target.value));
+  // },
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WoodNavbar));
