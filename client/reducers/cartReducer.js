@@ -27,11 +27,11 @@ const cartReducer = (state = initialState, action) => {
         stain: { type: action.payload.type, price: action.payload.price },
         total: calcTotal(state.base, state.wood.price, action.payload.price)
       };
-    case types.LOGIN:
-      return {
-        ...state,
-        didLogIn: true,
-      };
+    // case types.LOGIN:
+    //   return {
+    //     ...state,
+    //     didLogIn: true,
+    //   };
     case types.LOGOUT:
       return {
         ...state,

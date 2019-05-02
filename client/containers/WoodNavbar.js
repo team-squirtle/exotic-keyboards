@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import * as actions from '../actions/index';
 import { Col, Navbar, Container, Button, InputGroup, Form, FormControl } from 'react-bootstrap';
+import axios from 'axios';
 
 class WoodNavbar extends Component {
   constructor(props) {
@@ -27,7 +28,16 @@ class WoodNavbar extends Component {
     e.preventDefault();
 
     this.setState({ submitted: true });
-    const { email, password } = this.state;
+    const { email, password } = this.state,
+      requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      }
+    return axios('uri', requestOptions)
+      .then(() => { console.log('success!') })
+      .catch((err) => { console.log(err) })
+
     // const { dispatch } = this.props;
     // if (email && password) {
     // dispatch(userActions.login(email, password));
@@ -86,7 +96,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
 
-  // login: () => dispatch(actions.login()),
+  login: () => dispatch(actions.login()),
   inputEmail: (event) => {
     dispatch(actions.inputEmail(event.target.value));
   },
