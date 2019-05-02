@@ -9,7 +9,6 @@ const Header = () => {
   return (
     <div>
       <WoodNavbar />
-      {/* <h1 style={headerStyle} className="header"> Lumber Exotics Co. </h1> */}
     </div>
   );
 };
