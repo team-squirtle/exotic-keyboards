@@ -6,10 +6,10 @@ import * as actions from '../actions/index';
 import ProductDisplay from '../components/productDisplay';
 import CardGroup from 'react-bootstrap/CardGroup'
 
-const woodSelectStyle = {  // Color will change when wood is selected,
-  textAlign: 'center',
-  border: '4px solid black'
-};
+// const woodSelectStyle = {  // unused code
+//   textAlign: 'center',
+//   border: '4px solid black'
+// };
 
 // CONNECT our redux store, mapStateToProps, mapDispatchToProps
 class WoodContainer extends Component {
@@ -44,16 +44,16 @@ class WoodContainer extends Component {
 
   goToStainSelection() {
     if (this.state.selectedItem !== false) {
-      const {history} = this.props;
+      const { history } = this.props;
       history.push('/stain');
     }
   }
 
   render() {
     const woodBoxes = this.props.wood.map(el => (
-      <ProductDisplay key={ el.type } type={ el.type } image={ el.image } description={ el.description }
-                      price={ el.price } inStock={ el.inStock } selectedItem={ this.state.selectedItem }
-                      selectItemClickHandler={ this.selectItemClickHandler }/>
+      <ProductDisplay key={el.type} type={el.type} image={el.image} description={el.description}
+        price={el.price} inStock={el.inStock} selectedItem={this.state.selectedItem}
+        selectItemClickHandler={this.selectItemClickHandler} />
     ));
 
     return (

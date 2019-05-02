@@ -4,3 +4,6 @@ export const ADDTOCART = "ADDTOCART";
 export const SELECT_WOOD = "SELECT_WOOD";
 export const SELECT_STAIN = "SELECT_STAIN";
 export const SUBMIT_ORDER = "SUBMIT_ORDER";
+export const INPUT_EMAIL = "INPUT_EMAIL";
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";

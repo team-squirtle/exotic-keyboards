@@ -3,64 +3,103 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import * as actions from '../actions/index';
-import { Navbar, Container, Button, InputGroup, FormControl } from 'react-bootstrap';
-import Form from 'react-bootstrap/FormControl';
-
-console.log(Navbar)
+import { Col, Navbar, Container, Button, InputGroup, Form, FormControl } from 'react-bootstrap';
+import axios from 'axios';
 
 class WoodNavbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      email: '',
+      password: '',
+      submitted: false
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    console.log(e.target.value)
+    const { name, value } = e.target;
+    this.setState({ [ name ]: value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    this.setState({ submitted: true });
+    const { email, password } = this.state,
+      requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      }
+    return axios('uri', requestOptions)
+      .then(() => { console.log('success!') })
+      .catch((err) => { console.log(err) })
+
+    // const { dispatch } = this.props;
+    // if (email && password) {
+    // dispatch(userActions.login(email, password));
+    // }
   }
 
   render() {
+    const { email, password, submitted } = this.state;
+
     return (
       <div>
-        <Container>
-          <Navbar bg='dark' variant='dark'>
-            <Navbar.Brand>
-              Lumber Exotics Co.
+        <Navbar bg='dark' variant='dark'>
+          <Navbar.Brand>
+            Lumber Exotics Co.
             </Navbar.Brand>
-            {/* <Form.Group > */}
-            {/* <FormControl type='password'> */}
+          <Form
+            inline
+            onSubmit={this.handleSubmit}
+            name='loginForm'>
+            <Form.Row >
+              <Form.Control
+                type='email'
+                name='email'
+                value={email}
+                placeholder='Email'
+                className='mr-sm-2'
+                onChange={this.handleChange}
+              // onChange={this.props.inputEmail}
 
-            {/* </FormControl> */}
-            {/* <InputGroup>
-                <InputGroup.Prepend>
-                  <InputGroup.Text id='basic-addon1'>
-                    Username
-                  </InputGroup.Text>
-                </InputGroup.Prepend>
-              </InputGroup>
-              <InputGroup>
-                <InputGroup.Prepend>
-                  <InputGroup.Text id='basic-addon1'>
-                    Password
-                  </InputGroup.Text>
-                </InputGroup.Prepend>
-              </InputGroup> */}
-            {/* </Form.Group> */}
-            <Form>
-              {/* <FormControl type='password' placeholder='Password' className=" mr-sm-2" /> */}
-            </Form>
-            <Button type='submit' size='med' variant='light' className="mr-sm-2">
-              Login
-            </Button>
-          </Navbar>
-        </Container>
+              />
+              <Form.Control
+                type='password'
+                name='password'
+                value={password}
+                placeholder='Password' className='mr-sm-2'
+                onChange={this.handleChange}
+              />
+              <Button
+                type='submit'
+                variant='secondary'
+              // onSubmit={this.props.login}
+              >
+                Login
+                </Button>
+            </Form.Row>
+          </Form>
+        </Navbar>
       </div>
     );
   }
 }
 
-// const WoodNavbar = () => {
-//   return (
-//     <h1>
-//       hello!!
-//   </h1>
-//   )
-// }
+const mapStateToProps = store => ({
+  didLogIn: store.cart.didLogIn,
+})
 
+const mapDispatchToProps = dispatch => ({
 
-export default WoodNavbar;
+  login: () => dispatch(actions.login()),
+  inputEmail: (event) => {
+    dispatch(actions.inputEmail(event.target.value));
+  },
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WoodNavbar));
