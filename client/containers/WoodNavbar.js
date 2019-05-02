@@ -25,8 +25,15 @@ class WoodNavbar extends Component {
                 placeholder='Email'
                 className='mr-sm-2'
                 onChange={this.props.inputEmail} />
-              <Form.Control type='password' placeholder='Password' className='mr-sm-2' />
-              <Button type='submit' variant='secondary' >Login</Button>
+              <Form.Control
+                type='password'
+                placeholder='Password' className='mr-sm-2' />
+              <Button
+                type='submit'
+                variant='secondary'
+                onSubmit={this.props.login}>
+                Login
+                </Button>
             </Form.Row>
           </Form>
         </Navbar>

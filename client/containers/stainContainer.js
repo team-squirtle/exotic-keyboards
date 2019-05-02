@@ -5,10 +5,10 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions/index';
 import ProductDisplay from '../components/productDisplay';
 
-const stainSelectStyle = {  // Color will change when wood is selected,
-  textAlign: 'center',
-  border: '4px solid black'
-};
+// const stainSelectStyle = {  // Color will change when wood is selected,
+//   textAlign: 'center',
+//   border: '4px solid black'
+// };
 
 // CONNECT our redux store, mapStateToProps, mapDispatchToProps
 class StainContainer extends Component {
