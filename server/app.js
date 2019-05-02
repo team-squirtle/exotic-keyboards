@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 //routes
-const productRoute = require('./routes/productRoute.js');
-const userRoute = require('./routes/userRoutes.js');
+const productRoutes = require('./routes/productRoutes.js');
+const userRoutes = require('./routes/userRoutes.js');
 const sessionRoutes = require('./routes/sessionRoutes.js');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -18,9 +18,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 //app.use('/build', express.static(path.join(__dirname, '../build')));
-app.use('/api/product', productRoute);
-app.use('/api/users', userRoute);
-app.use('/api/sessions', sessionRoutes);
+app.use('/api/product', productRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/session', sessionRoutes);
 
 app.get('/', (req, res) => {
  res.sendFile(path.join(__dirname, '../index.html'));
