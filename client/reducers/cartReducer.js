@@ -1,10 +1,12 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  wood: {type: 'ash', price: 20},
-  stain: {type: 'purple', price: 30},
+  wood: { type: 'ash', price: 20 },
+  stain: { type: 'purple', price: 30 },
   base: 50,
-  total: 100
+  total: 100,
+  email: '',
+  didLogIn: false,
 };
 
 function calcTotal(base, woodPrice, stainPrice) {
@@ -12,18 +14,33 @@ function calcTotal(base, woodPrice, stainPrice) {
 }
 
 const cartReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case types.SELECT_WOOD:
       return {
         ...state,
-        wood: {type: action.payload.type, price: action.payload.price},
+        wood: { type: action.payload.type, price: action.payload.price },
         total: calcTotal(state.base, action.payload.price, state.stain.price)
       };
     case types.SELECT_STAIN:
       return {
         ...state,
-        stain: {type: action.payload.type, price: action.payload.price},
-        total: calcTotal(state.base, state.wood.price,action.payload.price)
+        stain: { type: action.payload.type, price: action.payload.price },
+        total: calcTotal(state.base, state.wood.price, action.payload.price)
+      };
+    // case types.LOGIN:
+    //   return {
+    //     ...state,
+    //     didLogIn: true,
+    //   };
+    case types.LOGOUT:
+      return {
+        ...state,
+        didLogIn: false,
+      };
+    case types.INPUT_EMAIL:
+      return {
+        ...state,
+        email: action.payload,
       };
     default:
       return {
