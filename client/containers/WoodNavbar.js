@@ -5,6 +5,9 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions/index';
 import { Col, Navbar, Container, Button, InputGroup, Form, FormControl } from 'react-bootstrap';
 import axios from 'axios';
+import WelcomeUser from '../components/WelcomeUser';
+import LoginForm from '../components/LoginForm';
+
 
 class WoodNavbar extends Component {
   constructor(props) {
@@ -14,29 +17,34 @@ class WoodNavbar extends Component {
       password: '',
       submitted: false
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.handlesubmit = this.handlesubmit.bind(this);
   }
 
-  handleChange(e) {
+  onChange(e) {
     console.log(e.target.value)
     const { name, value } = e.target;
     this.setState({ [ name ]: value });
   }
 
-  handleSubmit(e) {
+  handlesubmit(e) {
     e.preventDefault();
 
-    this.setState({ submitted: true });
-    const { email, password } = this.state,
-      requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      }
-    return axios('/api/user/login', requestOptions)
-      .then(() => { console.log('success!') })
-      .catch((err) => { console.log(err) })
+    // this.setState({ submitted: true });
+    // const { email, password } = this.state,
+    //   requestOptions = {
+    //     method: 'POST',
+    //     // headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email, password })
+    //   }
+    // axios('/api/user/login', requestOptions)
+    //   .then(() => { console.log('success!') })
+    //   .catch((err) => { console.log(err) })
+    const email = this.state.email,
+      password = this.state.password,
+      payloadObj = { email, password };
+
+    this.props.login(payloadObj);
 
     // const { dispatch } = this.props;
     // if (email && password) {
@@ -47,46 +55,27 @@ class WoodNavbar extends Component {
   render() {
     const { email, password, submitted } = this.state;
 
+    const userWelcome = () => {
+      if (this.props.isLoggedIn) {
+        return <WelcomeUser />
+      } else {
+        return <LoginForm
+          email={this.state.email}
+          password={this.state.password}
+          onChange={this.onChange}
+          handlesubmit={this.handlesubmit}
+        />
+      }
+    }
+
     return (
       <div>
         <Navbar bg='dark' variant='dark'>
           <Navbar.Brand>
             Lumber Exotics Co.
             </Navbar.Brand>
-          <Form
-            inline
-            onSubmit={this.handleSubmit}
-            name='loginForm'>
-            <Form.Row >
-              <Form.Control
-                size='sm'
-                type='email'
-                name='email'
-                value={email}
-                placeholder='Email'
-                className='mr-sm-2'
-                onChange={this.handleChange}
-              // onChange={this.props.inputEmail}
-
-              />
-              <Form.Control
-                size='sm'
-                type='password'
-                name='password'
-                value={password}
-                placeholder='Password' className='mr-sm-2'
-                onChange={this.handleChange}
-              />
-              <Button
-                size='sm'
-                type='submit'
-                variant='secondary'
-              // onSubmit={this.props.login}
-              >
-                Login
-                </Button>
-            </Form.Row>
-          </Form>
+          {userWelcome()}
+          {/* <WelcomeUser /> */}
         </Navbar>
       </div>
     );
@@ -94,12 +83,12 @@ class WoodNavbar extends Component {
 }
 
 const mapStateToProps = store => ({
-  didLogIn: store.cart.didLogIn,
+  isLoggedIn: store.cart.isLoggedIn,
 })
 
 const mapDispatchToProps = dispatch => ({
 
-  // login: () => dispatch(actions.login()),
+  login: (value) => dispatch(actions.login(value)),
   // inputEmail: (event) => {
   //   dispatch(actions.inputEmail(event.target.value));
   // },

@@ -6,10 +6,6 @@ import * as actions from '../actions/index';
 import ProductDisplay from '../components/productDisplay';
 import CardGroup from 'react-bootstrap/CardGroup'
 
-// const woodSelectStyle = {  // unused code
-//   textAlign: 'center',
-//   border: '4px solid black'
-// };
 
 // CONNECT our redux store, mapStateToProps, mapDispatchToProps
 class WoodContainer extends Component {
@@ -60,9 +56,11 @@ class WoodContainer extends Component {
       <div>
         <h1>Select your hardwood type:</h1>
         <div className="card-group">
-          { woodBoxes }
+          {woodBoxes}
         </div>
-        <button onClick={this.goToStainSelection}>Next step: Select your stain</button>
+        <button onClick={this.goToStainSelection}>
+          Next step: Select your stain
+        </button>
       </div>
     );
   }
@@ -74,7 +72,6 @@ const mapStateToProps = store => ({
 
 // Runs our action creator
 const mapDispatchToProps = dispatch => ({
-  // getWood: val => dispatch(actions.getWood(val))
   getWood: () => dispatch(actions.getWood()),
   selectWood: (value) => dispatch(actions.selectWood(value))
 });

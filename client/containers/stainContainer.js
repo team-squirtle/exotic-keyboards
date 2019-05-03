@@ -4,11 +4,8 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import * as actions from '../actions/index';
 import ProductDisplay from '../components/productDisplay';
+import CardGroup from 'react-bootstrap/CardGroup'
 
-// const stainSelectStyle = {  // Color will change when wood is selected,
-//   textAlign: 'center',
-//   border: '4px solid black'
-// };
 
 // CONNECT our redux store, mapStateToProps, mapDispatchToProps
 class StainContainer extends Component {
@@ -55,11 +52,15 @@ class StainContainer extends Component {
     return (
       <div>
         <h1>Select your stain</h1>
-        {stainBoxes}
+        <div className="card-group">
+          {stainBoxes}
+        </div>
         <button>
           <Link to="/wood/">Previous</Link>
         </button>
-        <button onClick={this.goToCheckout}>Next step: Checkout</button>
+        <button onClick={this.goToCheckout}>
+          Next step: Checkout
+        </button>
       </div>
     );
   }
@@ -71,7 +72,6 @@ const mapStateToProps = store => ({
 
 // Runs our action creator
 const mapDispatchToProps = dispatch => ({
-  // getWood: val => dispatch(actions.getWood(val))
   getStain: () => dispatch(actions.getStain()),
   selectStain: (value) => dispatch(actions.selectStain(value))
 });

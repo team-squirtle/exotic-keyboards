@@ -5,17 +5,17 @@ import Carousel from 'react-bootstrap/Carousel'
 import WoodNavbar from '../containers/WoodNavbar';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  font-size: 36px;
+const Wrapper = styled.div
+  `font-size: 36px;
   font-family: "Helvetica Neue";
   line-height: 210px;
-  text-align: center;
+  text-align: center;`
 
 
 const Home = () => {
-  return (lkdflajdflja
+  return (
     < Wrapper >
-    <ControlledCarousel id="myCarousel" />
+      <ControlledCarousel id="myCarousel" />
     </Wrapper >
   )
 };
