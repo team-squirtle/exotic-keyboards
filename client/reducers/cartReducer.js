@@ -6,7 +6,7 @@ const initialState = {
   base: 50,
   total: 100,
   email: '',
-  didLogIn: false,
+  isLoggedIn: false,
 };
 
 function calcTotal(base, woodPrice, stainPrice) {
@@ -27,15 +27,16 @@ const cartReducer = (state = initialState, action) => {
         stain: { type: action.payload.type, price: action.payload.price },
         total: calcTotal(state.base, state.wood.price, action.payload.price)
       };
-    // case types.LOGIN:
-    //   return {
-    //     ...state,
-    //     didLogIn: true,
-    //   };
+    case types.LOGIN:
+      return {
+        ...state,
+        isLoggedIn: true,
+        email: action.payload,
+      };
     case types.LOGOUT:
       return {
         ...state,
-        didLogIn: false,
+        isLoggedIn: false,
       };
     case types.INPUT_EMAIL:
       return {

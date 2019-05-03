@@ -34,25 +34,25 @@ export const getStain = () => {
   }
 };
 
-// export const login = (value) => {
-// return (dispatch) => {
-// axios.post('/* login route goes here */', {
-//   email: value.email,
-//   password: value.password
-// })
-// return {
-//   type: types.LOGIN,
-// }
-//   .then(response => {
-//     dispatch({
-//       type: types.LOGIN,
-//     })
-//   })
-//   .catch(err => {
-//   console.log(err);
-// });
-// }
-// };
+export const login = (value) => {
+  return (dispatch) => {
+    axios.post('/api/user/login', {
+      email: value.email,
+      password: value.password
+    })
+      .then(response => {
+        console.log('logged in!')
+
+        dispatch({
+          type: types.LOGIN,
+          payload: value.email,
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
 
 // NON-ASYNC ACTIONS
 export const submitOrder = () => {
