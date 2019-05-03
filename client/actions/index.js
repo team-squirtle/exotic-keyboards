@@ -55,9 +55,22 @@ export const getStain = () => {
 // };
 
 // NON-ASYNC ACTIONS
-export const submitOrder = () => {
-  return {
-    type: types.SUBMIT_ORDER
+export const submitOrder = (value) => {
+  return (dispatch) => {
+    // const myState = getState().cart
+    // console.log(myState)
+    // console.log(value);
+    axios.post('/api/order', value)
+    .then(response => {
+      console.log('ran');
+      // dispatch({
+      //   type: types.SUBMIT_ORDER,
+      //   payload: response.data
+        })
+      // })
+      // .catch(err => {
+      //   console.log(err)
+      // });
   }
 };
 

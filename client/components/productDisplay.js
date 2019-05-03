@@ -29,7 +29,7 @@ const ProductDisplay = props => {
           <div className="card-body">
             <h5 id={props.type} className="card-title">{props.type}</h5>
             <p className="card-text">{props.description}</p>
-            <a onClick={handleClick} className="btn btn-primary"></a>
+            <a onClick={handleClick} className="btn btn-primary">SELECT</a>
             <p className="card-text">{props.price}</p>
             <p className="card-text"><small className="text-muted">{props.inStock === true ? 'Available' : 'Out of Stock'}</small></p>
           </div> 
