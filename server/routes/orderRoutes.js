@@ -6,4 +6,9 @@ router.post('/', (req, res) => {
   orderController.createOrder(req, res)
 });
 
+router.get('/foo', (req, res) => {
+  res.send('route reached');
+
+})
+
 module.exports = router;
